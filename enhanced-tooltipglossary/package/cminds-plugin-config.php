@@ -7,7 +7,7 @@ $activation_redirect_wizard = get_option('cmtt_options')['cmtt_addWizardMenu'] ?
 $cminds_plugin_config = array(
 	'plugin-is-pro'                 => false,
 	'plugin-has-addons'             => true,
-	'plugin-version'                => '4.4.1',
+	'plugin-version'                => '4.4.2',
 	'plugin-abbrev'                 => 'cmtt',
 	'plugin-affiliate'              => '',
 	'plugin-redirect-after-install' => $activation_redirect_wizard ? admin_url( 'admin.php?page=cmtt_setup_wizard' ) : admin_url( 'admin.php?page=cmtt_settings' ),

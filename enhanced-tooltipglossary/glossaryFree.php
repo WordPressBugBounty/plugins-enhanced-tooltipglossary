@@ -473,7 +473,7 @@ class CMTT_Free {
 		include_once CMTT_PLUGIN_DIR . 'glossaryIndex.php';
 		include_once CMTT_PLUGIN_DIR . 'amp.php';
 		include_once CMTT_PLUGIN_DIR . 'functions.php';
-		include_once CMTT_PLUGIN_DIR . 'wizard.php';
+		include_once CMTT_PLUGIN_DIR . 'wizard/wizard.php';
 
 		do_action( 'cmtt_include_files_after' );
 	}

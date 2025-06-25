@@ -5,7 +5,7 @@ Donate link: https://www.cminds.com/wordpress-plugins-library/tooltipglossary/
 Tags: glossary, vocabulary, dictionary, tooltip, lexicon
 Requires at least: 5.4.0
 Tested up to: 6.8
-Stable tag: 4.4.8
+Stable tag: 4.4.9
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -231,10 +231,13 @@ You can use glossaryLink. You can also define glossaryLinkMain if you wish to ha
 
 == Changelog ==
 
+= 4.4.9 =
+Release Date: 25 Jun 2025
+* Small bugfix
+
 = 4.4.8 =
 Release Date: 24 Jun 2025
 * Updated plugin readme
-
 
 = 4.4.7 =
 Release Date: 12 Jun 2025

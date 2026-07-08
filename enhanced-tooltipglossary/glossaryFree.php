@@ -1,5 +1,4 @@
 <?php
-
 class GlossaryTooltipException extends Exception {
 
 }
@@ -508,6 +507,15 @@ class CMTT_Free {
 			$template_content = self::cmtt_glossary_parse( $template_content );
 		}
 	}
+	
+	private static function cmtt_turkish_regex($term) {
+		return strtr($term, array(
+			'İ' => '[İi]',
+			'i' => '[İi]',
+			'I' => '[Iı]',
+			'ı' => '[Iı]',
+		));
+	}
 
 	public static function cmtt_glossary_parse( $content, $force = false ) {
 		global $post, $wp_query, $replacedTerms;
@@ -741,7 +749,22 @@ class CMTT_Free {
 				foreach ( $glossarySearchStringArr as $chunk ) {
 					self::log( 'Going through $glossarySearchStringArr $chunk' );
 
-					$glossarySearchString = '/' . ( ( $spaceSeparated ) ? '(?<=\P{L}|^)(?<!(\p{N}))' : '' ) . '(?!(<|&lt;))(' . ( ! $caseSensitive ? '(?i)' : '' ) . implode( '|', $chunk ) . ')(?!(>|&gt;))' . ( ( $spaceSeparated ) ? '(?=\P{L}|$)(?!(\p{N}))' : '' ) . '/u';
+					//$glossarySearchString = '/' . ( ( $spaceSeparated ) ? '(?<=\P{L}|^)(?<!(\p{N}))' : '' ) . '(?!(<|&lt;))(' . ( ! $caseSensitive ? '(?i)' : '' ) . implode( '|', $chunk ) . ')(?!(>|&gt;))' . ( ( $spaceSeparated ) ? '(?=\P{L}|$)(?!(\p{N}))' : '' ) . '/u';
+					
+					$regexTerms = array_map(
+						array(__CLASS__, 'cmtt_turkish_regex'),
+						$chunk
+					);
+					$glossarySearchString =
+						'/'
+						. ( ( $spaceSeparated ) ? '(?<=\P{L}|^)(?<!(\p{N}))' : '' )
+						. '(?!(<|&lt;))('
+						. ( ! $caseSensitive ? '(?i)' : '' )
+						. implode('|', $regexTerms)
+						. ')(?!(>|&gt;))'
+						. ( ( $spaceSeparated ) ? '(?=\P{L}|$)(?!(\p{N}))' : '' )
+						. '/u';
+						
 					$content              = self::cmtt_str_replace( $content, $glossarySearchString );
 				}
 			}
@@ -1307,7 +1330,13 @@ class CMTT_Free {
 		);
 
 		if ( ! $caseSensitive ) {
-			return mb_strtolower( $normalizedTitle );
+			// Turkish-aware conversion
+			$normalizedTitle = str_replace(
+				array('I', 'İ'),
+				array('ı', 'i'),
+				$normalizedTitle
+			);
+			return mb_strtolower($normalizedTitle, 'UTF-8');
 		}
 
 		return $normalizedTitle;

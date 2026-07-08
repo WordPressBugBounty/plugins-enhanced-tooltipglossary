@@ -1,5 +1,4 @@
 <?php
-
 class CMTT_Glossary_Index {
 
 	public static $shortcodeDisplayed = false;

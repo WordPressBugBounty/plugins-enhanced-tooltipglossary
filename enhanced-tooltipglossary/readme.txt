@@ -5,7 +5,7 @@ Donate link: https://www.cminds.com/wordpress-plugins-library/tooltipglossary/
 Tags: glossary, vocabulary, dictionary, tooltip, lexicon
 Requires at least: 5.4.0
 Tested up to: 7.0
-Stable tag: 4.5.4
+Stable tag: 4.5.5
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -373,6 +373,13 @@ Yes. The free version includes a guided Setup Wizard to help you quickly configu
 12. Glossary Wizard Example - Sample step from the glossary setup process for new installations
 
 == Changelog ==
+
+= 4.5.5 =
+* Fixed issue with Turkish language
+* Resolved PHP warnings
+
+= 4.5.4 =
+* Improvements
 
 = 4.5.3 =
 * Added new method of displaying tooltips
